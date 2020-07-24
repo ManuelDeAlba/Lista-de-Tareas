@@ -5,6 +5,7 @@
 body{
 	background:#eee;
 	font-family:sans-serif;
+	overflow:hidden;
 }
 .contenedor-controles{
 	width:90%;
@@ -51,10 +52,29 @@ body{
 	display:flex;
 }
 .objetoLista > .texto{
+	font-size:20px;
+	overflow-x:auto;
 	list-style: none;
 	width:90%;
 	text-align: justify;
 }
+/* SCROLLBAR */
+.objetoLista > .texto::-webkit-scrollbar{
+	appearance:none;
+	height:8px;
+}
+.objetoLista > .texto::-webkit-scrollbar-track{
+	background: rgba(0,0,0,.2);
+	border-radius:5px;
+}
+.objetoLista > .texto::-webkit-scrollbar-thumb{
+	background: rgba(0,0,0,.4);
+	border-radius: 5px;
+}
+.objetoLista > .texto::-webkit-scrollbar-thumb:hover{
+	background: rgba(0,0,0,.6);
+}
+
 .objetoLista > button{
 	width:10%;
 	background:transparent;
@@ -74,5 +94,23 @@ body{
 	color:white;
 }
 .borrar{
-	display:none;
+	/*display:none;*/
+	transform:translate(+110%);
+	transition:transform 1s;
+}
+
+@media screen and (max-width:768px){
+	.contenedor-controles > button{
+		width:15%;
+	}
+}
+@media screen and (max-width:500px){
+	.contenedor-controles > button{
+		width:20%;
+	}
+}
+@media screen and (max-width:400px){
+	.contenedor-controles > button{
+		width:30%;
+	}
 }

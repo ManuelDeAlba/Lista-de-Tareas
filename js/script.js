@@ -23,15 +23,16 @@ function nuevoItem(txt){
     btnC.classList.toggle('colorWhite');
   })
 
-  btnC.addEventListener("click", ()=>{
+  btnC.addEventListener("click", function(){
     contenedor.classList.toggle("borrar");
+    setTimeout(()=>{borrarContenedor(contenedor)},1000)
   })
 }
 
 function obtenerTextos(){
   let textos = [];
   document.querySelectorAll("p.texto").forEach(p=>{
-    textos.push(p.innerText);
+    textos.push(p.innerHTML);
   })
   return textos;
 }
@@ -48,12 +49,9 @@ function cargarTextos(){
 }
 
 //Borrar contenedores
-setInterval(()=>{
-  var contenedores = document.getElementsByClassName('borrar');
-  for(var i=0;i<contenedores.length;i++){
-    contenedores[i].parentNode.removeChild(contenedores[i])
-  }
-})
+function borrarContenedor(e){
+	e.parentNode.removeChild(e);
+}
 
 //Eventos
 window.addEventListener('load',()=>{
