@@ -77,11 +77,15 @@ btnAgregar.addEventListener('click', ()=>{
   }
 })
 
+let timeoutGuardado;
+
 btnGuardar.addEventListener('click', ()=>{
   guardarTextos();
   //ALERTA DE GUARDADO EXITOSO
+  //Quitamos el timeout por si al dar muchos clicks todavia no termina esa animación (la reiniciamos)
+  clearTimeout(timeoutGuardado);
   document.querySelector('#alerta').classList.add('abierta');
-  setTimeout(()=>{
+  timeoutGuardado = setTimeout(()=>{
     document.querySelector('#alerta').classList.remove('abierta');
   },1000*2)
 })
