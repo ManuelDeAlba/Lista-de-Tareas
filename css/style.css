@@ -5,11 +5,11 @@
 body{
 	background:#eee;
 	font-family:sans-serif;
-	overflow:hidden;
+	overflow-x:hidden;
 }
 .contenedor-controles{
 	width:90%;
-	margin:auto;
+	margin:auto auto 10px auto;
 	display:flex;
 	justify-content: space-evenly;
 	align-items: center;
@@ -35,13 +35,17 @@ body{
 	cursor:pointer;
 	font-weight:700;
 	outline:none;
+	transition:all .2s;
 }
 .contenedor-controles button:hover{
 	background: #000;
 	color:#fff;
 	border:2px solid #fff;
 }
-.objetoLista{
+.lista div{
+	transform:translateX(-110%);
+}
+.lista .objetoLista{
 	padding:20px;
 	border:2px solid blue;
 	border-radius: 5px;
@@ -50,6 +54,8 @@ body{
 	margin:0 auto 10px auto;
 	transition:all .2s;
 	display:flex;
+	transition:transform .2s;
+	transform:translateX(0%);
 }
 .objetoLista > .texto{
 	font-size:20px;
@@ -86,17 +92,37 @@ body{
 	user-select:none;
 	outline:none;
 }
-.hecho{
+.objetoLista.hecho{
 	background:green;
 	color:#fff;
 }
 .colorWhite{
-	color:white;
+	color:#fff;
 }
-.borrar{
-	/*display:none;*/
-	transform:translate(+110%);
-	transition:transform 1s;
+.colorBlack{
+	color:#000;
+}
+.lista .objetoLista.borrar{
+	background: lightblue;
+	color:#000;
+	transform:translate(110%);
+	transition:transform .5s;
+}
+
+/* Alerta Guardado */
+.alerta{
+	position:absolute;
+	bottom:10%;
+	left:50%;
+	background: #FFF9E3;
+	padding:10px;
+	border-radius:10px;
+	box-shadow:5px 5px 10px #000;
+	transform:translate(-50%) scale(0);
+	transition:transform .2s;
+}
+.alerta.abierta{
+	transform:translate(-50%) scale(1);
 }
 
 @media screen and (max-width:768px){
