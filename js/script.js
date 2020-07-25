@@ -26,13 +26,11 @@ function nuevoItem(txt){
   //MARCAR HECHO
   contenedor.addEventListener("click",()=>{
     contenedor.classList.toggle("hecho");
-    btnC.classList.toggle('colorWhite');
   })
 
   //BOTON CERRAR
   btnC.addEventListener("click", function(){
     contenedor.classList.toggle("borrar");
-    btnC.classList.toggle("colorBlack");
     setTimeout(()=>{borrarContenedor(contenedor)},500)
   })
 }
@@ -51,6 +49,13 @@ function guardarTextos(){
   } else {
     localStorage.removeItem("textos");
   }
+  //ALERTA DE GUARDADO EXITOSO
+  //Quitamos el timeout por si al dar muchos clicks todavia no termina esa animación (la reiniciamos)
+  clearTimeout(timeoutGuardado);
+  document.querySelector('#alerta').classList.add('abierta');
+  timeoutGuardado = setTimeout(()=>{
+    document.querySelector('#alerta').classList.remove('abierta');
+  },1000*2)
 }
 
 function cargarTextos(){
@@ -81,13 +86,6 @@ let timeoutGuardado;
 
 btnGuardar.addEventListener('click', ()=>{
   guardarTextos();
-  //ALERTA DE GUARDADO EXITOSO
-  //Quitamos el timeout por si al dar muchos clicks todavia no termina esa animación (la reiniciamos)
-  clearTimeout(timeoutGuardado);
-  document.querySelector('#alerta').classList.add('abierta');
-  timeoutGuardado = setTimeout(()=>{
-    document.querySelector('#alerta').classList.remove('abierta');
-  },1000*2)
 })
 
 document.addEventListener('keyup', e=>{
