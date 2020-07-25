@@ -141,3 +141,9 @@ body{
 		width:30%;
 	}
 }
+@media screen and (max-width:300px){
+	.contenedor-controles > button{
+		width:33%;
+		font-size:14px;
+	}
+}
